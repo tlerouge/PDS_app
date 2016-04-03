@@ -8,7 +8,7 @@ import java.sql.*;
  */
 public class PdsDatabase {
 
-  protected static final String DRIVER_NAME = "oracle.jdbc.OracleDriver";
+  protected static final String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
   protected static final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
   
   protected static final String USER = "pds";

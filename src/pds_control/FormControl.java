@@ -6,8 +6,9 @@
 package pds_control;
 
 import java.awt.event.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import object.Client;
 import org.jdesktop.swingx.JXDatePicker;
@@ -127,7 +128,11 @@ public class FormControl implements ActionListener {
              System.out.println("Job : " + job.getText());*/
             
             this.client = new Client(civility.getSelectedItem().toString(), name.getText(), firstName.getText(), convertUtilToSql(birthDate.getDate()), birthPlace.getText(), sex.getSelectedItem().toString(), nationality.getSelectedItem().toString(), Integer.parseInt(nb.getText()), street.getText(), add.getText(), Integer.parseInt(cp.getText()), city.getText(), country.getSelectedItem().toString(), Integer.parseInt(pnumber.getText()), Integer.parseInt(phome.getText()), Integer.parseInt(pbusiness.getText()), email.getText(), job.getText());
-            client.CreatePerson();
+            try {
+                client.CreatePerson();
+            } catch (SQLException ex) {
+                Logger.getLogger(FormControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else if (source == btnClear) {
             System.out.println("Vous voulez effacer les données saisies");
